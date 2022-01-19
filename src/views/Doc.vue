@@ -1,9 +1,6 @@
 <template>
   <div>
-    <nav>
-      <div class="log"></div>
-      <div class="menu"></div>
-    </nav>
+    <TopNav />
     <div class="content">
       <aside>侧边栏</aside>
       <main>主内容</main>
@@ -11,9 +8,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import TopNav from '../components/topNav.vue'
 export default {
-  name: 'Doc'
+  name: 'Doc',
+  components: {TopNav}
 }
 </script>
 
