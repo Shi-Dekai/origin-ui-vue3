@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav>
+    <nav class="nav">
       <div class="log"></div>
       <div class="menu"></div>
     </nav>
@@ -21,6 +21,5 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-
+<style lang="scss" scoped>
 </style>
