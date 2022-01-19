@@ -1,8 +1,11 @@
 <template>
   <div>
     <nav class="nav">
-      <div class="log"></div>
-      <div class="menu"></div>
+      <div class="logo">LOGO</div>
+      <ul class="menu">
+        <li>菜单1</li>
+        <li>菜单2</li>
+      </ul>
     </nav>
     <div class="banner">
       <h1>OriginUI</h1>
@@ -22,4 +25,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.nav {
+  background: pink;
+  display: flex;
+  padding: 16px;
+  > .logo {
+    max-width: 6em;
+    margin-right: auto;
+  }
+  > .menu {
+    display: flex;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    > li {
+      margin: 0 1em;
+    }
+  }
+}
 </style>
