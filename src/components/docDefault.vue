@@ -1,10 +1,10 @@
 <template>
-  <section>Switch 的文档</section>
+  <section>默认页</section>
 </template>
 
 <script>
 export default {
-  name: 'Switch'
+  name: 'DocDefault'
 }
 </script>
 
