@@ -9,14 +9,13 @@ import {router} from './router'
 export default {
   name: 'App',
   setup() {
-    const visible = ref(true)
+    const width = document.documentElement.clientWidth;
+    const visible = ref(width > 500)
     const update = ()=>{
       visible.value = !visible.value
     }
     provide('menu', {visible, update})  //set
 
-    const width = document.documentElement.clientWidth;
-    const menuVisible = ref(width > 500);
     router.afterEach(() => {
       if (width <= 500) visible.value = false
     })
