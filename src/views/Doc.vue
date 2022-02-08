@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import TopNav from '../components/topNav.vue'
+import TopNav from '../components/TopNav.vue'
 import {inject, Ref} from 'vue'
 export default {
   name: 'Doc',

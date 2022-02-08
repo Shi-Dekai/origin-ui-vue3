@@ -1,10 +1,9 @@
 <template>
-  <section>dialog文档</section>
+  <section>switch组件</section>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  name: 'Dialog'
 }
 </script>
 

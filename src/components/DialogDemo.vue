@@ -1,10 +1,10 @@
 <template>
-  <section>switch文档</section>
+  <section>dialog文档</section>
 </template>
 
 <script>
 export default {
-  name: 'Switch'
+  name: 'DialogDemo'
 }
 </script>
 
