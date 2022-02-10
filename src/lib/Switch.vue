@@ -25,17 +25,21 @@ button{
   width: $h*2;
   cursor: pointer;
   border: none;
-  background: grey;
+  background: #bfbfbf;
   border-radius: $h/2;
   position: relative;
   &.checked {
-    background: blue;
+    background: #1890ff;
     span {
       left: calc(100% - #{$h2} - 2px);
     }
+    &:active span {width: $h2 + 4px; margin-left: -4px;}
   }
   &:focus {
     outline: none;
+  }
+  &:active{
+    > span {width: $h2 + 4px;}
   }
 }
 span{
@@ -46,6 +50,6 @@ span{
   width: $h2;
   background:white;
   border-radius: $h2 / 2;
-  transition: left 250ms;
+  transition: all 250ms;
 }
 </style>
