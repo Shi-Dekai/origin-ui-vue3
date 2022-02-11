@@ -1,10 +1,14 @@
 <template>
-  <section>button文档</section>
+  <section>
+    <Button>按钮1</Button>
+  </section>
 </template>
 
 <script>
+import Button from '../lib/Button.vue'
 export default {
-  name: 'ButtonDemo'
+  name: 'ButtonDemo',
+  components: {Button}
 }
 </script>
 
