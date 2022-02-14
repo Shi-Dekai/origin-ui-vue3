@@ -1,14 +1,16 @@
 <template>
   <section>
-    <Button>按钮1</Button>
+    <Button>按钮</Button>
+    <Button theme="link">link按钮</Button>
+    <Button theme="text">text按钮</Button>
   </section>
 </template>
 
-<script>
+<script lang="ts">
 import Button from '../lib/Button.vue'
 export default {
   name: 'ButtonDemo',
-  components: {Button}
+  components: {Button},
 }
 </script>
 
