@@ -1,15 +1,28 @@
 <template>
-  <button class="o-button" :class="`o-theme-${theme}`">
+  <button class="o-button" :class="classes">
     <slot />
   </button>
 </template>
 
 <script lang="ts">
+import {computed} from 'vue'
+
 export default {
   name: 'Button',
   props: {
-    theme: { type: String, default: 'button' }
-  }
+    theme: { type: String, default: 'button' },
+    size: { type: String, default: 'normal' },
+  },
+  setup(props) {
+    const { size, theme } = props
+    const classes = computed(()=>{
+      return {
+        [`o-theme-${theme}`]: theme,
+        [`o-size-${size}`]: size,
+      }
+    })
+    return { classes }
+  },
 }
 </script>
 
@@ -63,6 +76,16 @@ $radius: 4px;
     &:hover,&:focus{
       background: darken(white, 5%);
     }
+  }
+  &.o-size-big {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
+  &.o-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
   }
 }
 </style>
