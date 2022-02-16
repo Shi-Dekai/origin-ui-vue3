@@ -1,7 +1,7 @@
 <template>
   <h1>示例2</h1>
   <section>
-    <Button>按钮</Button>
+    <Button @click="onClick">按钮</Button>
     <Button theme="link">link按钮</Button>
     <Button theme="text">text按钮</Button>
   </section>
@@ -59,6 +59,12 @@ import Button from '../lib/Button.vue'
 export default {
   name: 'ButtonDemo',
   components: {Button},
+  setup() {
+    const onClick = () => {
+      console.log('你好')
+    }
+    return { onClick }
+  }
 }
 </script>
 
