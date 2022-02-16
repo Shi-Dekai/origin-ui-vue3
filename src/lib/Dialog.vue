@@ -1,15 +1,15 @@
 <template>
-  <div class="o-dialog-overlay"></div>
-  <div class="o-dialog-wrapper">
+  <div class="o-dialog-overlay" v-if="visible"></div>
+  <div class="o-dialog-wrapper" v-if="visible">
     <div class="o-dialog">
-      <header>标题</header>
+      <header>标题 <span class="o-dialog-close" @click="close"></span></header>
       <main>
         <p>第一行字</p>
         <p>第二行字</p>
       </main>
       <footer>
-        <Button>确定</Button>
-        <Button>取消</Button>
+        <Button @click="ok">确定</Button>
+        <Button @click="close">取消</Button>
       </footer>
     </div>
   </div>
@@ -19,7 +19,21 @@
 import Button from './Button.vue'
 export default {
   name: 'Dialog',
-  components: {Button}
+  components: {Button},
+  props: {
+    visible: { type: Boolean, default: false },
+    ok: { type: Function },
+    cancel: { type: Function },
+  },
+  setup(props, context) {
+    const close = () => {
+      context.emit('update:visible', false)
+    }
+    const ok = () => {
+      if (props.ok ?.() !== false) close()
+    }
+    return { close, ok }
+  }
 }
 </script>
 

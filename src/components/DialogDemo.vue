@@ -1,14 +1,32 @@
 <template>
   <section>
-    <Dialog/>
+    <Button @click="toggle">打开dialog</Button>
+    <Dialog v-model:visible="visible" :ok="ok"/>
   </section>
 </template>
 
 <script lang="ts">
 import Dialog from '../lib/Dialog.vue'
+import Button from '../lib/Button.vue'
+import {ref} from 'vue'
 export default {
   name: 'DialogDemo',
-  components: {Dialog}
+  components: {Button, Dialog},
+  setup() {
+    const visible = ref(false)
+    const toggle = () => {
+      visible.value = true
+    }
+    const ok = () => {
+      console.log('ok')
+      return false
+    }
+    return {
+      visible,
+      toggle,
+      ok
+    }
+  }
 }
 </script>
 
