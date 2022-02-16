@@ -1,20 +1,24 @@
 <template>
-  <div class="o-dialog-overlay" v-if="visible"></div>
-  <div class="o-dialog-wrapper" v-if="visible">
-    <div class="o-dialog">
-      <header>
-        <slot name="header" />
-        <span class="o-dialog-close" @click="close"></span>
-      </header>
-      <main>
-        <slot />
-      </main>
-      <footer>
-        <Button @click="ok">确定</Button>
-        <Button @click="close">取消</Button>
-      </footer>
-    </div>
-  </div>
+  <template v-if="visible">
+    <Teleport to="body">
+      <div class="o-dialog-overlay"></div>
+      <div class="o-dialog-wrapper">
+        <div class="o-dialog">
+          <header>
+            <slot name="header" />
+            <span class="o-dialog-close" @click="close"></span>
+          </header>
+          <main>
+            <slot />
+          </main>
+          <footer>
+            <Button @click="ok">确定</Button>
+            <Button @click="close">取消</Button>
+          </footer>
+        </div>
+      </div>
+    </Teleport>
+  </template>
 </template>
 
 <script lang="ts">
