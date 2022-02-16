@@ -2,10 +2,12 @@
   <div class="o-dialog-overlay" v-if="visible"></div>
   <div class="o-dialog-wrapper" v-if="visible">
     <div class="o-dialog">
-      <header>标题 <span class="o-dialog-close" @click="close"></span></header>
+      <header>
+        <slot name="header" />
+        <span class="o-dialog-close" @click="close"></span>
+      </header>
       <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
+        <slot />
       </main>
       <footer>
         <Button @click="ok">确定</Button>

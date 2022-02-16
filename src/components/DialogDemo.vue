@@ -1,7 +1,11 @@
 <template>
   <section>
     <Button @click="toggle">打开dialog</Button>
-    <Dialog v-model:visible="visible" :ok="ok"/>
+    <Dialog v-model:visible="visible" :ok="ok">
+      <template #header>标题</template>
+      <p>hi</p>
+      <p>hi2</p>
+    </Dialog>
   </section>
 </template>
 
