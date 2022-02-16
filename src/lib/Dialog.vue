@@ -1,15 +1,17 @@
 <template>
-  <div class="dialog-overlay"></div>
-  <div class="dialog-wrapper">
-    <header>标题</header>
-    <main>
-      <p>第一行字</p>
-      <p>第二行字</p>
-    </main>
-    <footer>
-      <Button>确定</Button>
-      <Button>取消</Button>
-    </footer>
+  <div class="o-dialog-overlay"></div>
+  <div class="o-dialog-wrapper">
+    <div class="o-dialog">
+      <header>标题</header>
+      <main>
+        <p>第一行字</p>
+        <p>第二行字</p>
+      </main>
+      <footer>
+        <Button>确定</Button>
+        <Button>取消</Button>
+      </footer>
+    </div>
   </div>
 </template>
 
