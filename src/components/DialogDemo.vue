@@ -13,17 +13,22 @@
 import Dialog from '../lib/Dialog.vue'
 import Button from '../lib/Button.vue'
 import {ref} from 'vue'
+import {openDialog} from '../lib/openDialog'
 export default {
   name: 'DialogDemo',
   components: {Button, Dialog},
   setup() {
     const visible = ref(false)
     const toggle = () => {
-      visible.value = true
+      openDialog({
+        title: '标题',
+        content: '内容',
+        ok
+      })
     }
     const ok = () => {
       console.log('ok')
-      return false
+      return true
     }
     return {
       visible,
