@@ -2,20 +2,20 @@
   <div class="o-tabs">
     <div class="o-tabs-nav" ref="container">
       <div class="o-tabs-nav-item" :class="{selected: t === selected}" v-for="(t,index) in titles" :key="index"
-           :ref="el => { if (el) navItems[index] = el }"
+           :ref="el => { if (t===selected) selectedItem = el }"
            @click="select(t)">
         {{ t }}
       </div>
       <div class="o-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="o-tabs-content">
-      <component class="o-tabs-content-item" :is="current" :key="selected"/>
+      <component class="o-tabs-content-item" :is="current" :key="current.props.title"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {computed, onMounted, onUpdated, reactive, ref} from 'vue'
+import {computed, onMounted, reactive, ref, watchEffect} from 'vue'
 import Tab from './Tab.vue'
 
 export default {
@@ -24,21 +24,19 @@ export default {
     selected: {type: String}
   },
   setup(props, context) {
-    const navItems = reactive<HTMLDivElement[]>([])
+    const selectedItem = ref<HTMLDivElement>(null)
     const indicator = ref<HTMLDivElement>(null)
     const container = ref<HTMLDivElement>(null)
-    const init = () => {
-      const result = navItems.filter(div => div.classList.contains('selected'))[0]
-      const {width} = result.getBoundingClientRect()
-      indicator.value.style.width = width + 'px'
-      const {left: left1} = container.value.getBoundingClientRect()
-      const {left: left2} = result.getBoundingClientRect()
-      const left = left2 - left1
-      indicator.value.style.left = left + 'px'
-    }
-    onMounted(init)
-    onUpdated(init)
-
+    onMounted(()=>{
+      watchEffect(() => {
+        const {width} = selectedItem.value.getBoundingClientRect()
+        indicator.value.style.width = width + 'px'
+        const {left: left1} = container.value.getBoundingClientRect()
+        const {left: left2} = selectedItem.value.getBoundingClientRect()
+        const left = left2 - left1
+        indicator.value.style.left = left + 'px'
+      })
+    })
     const defaults = reactive(context.slots.default())
     defaults.map((tag) => {if (tag.type !== Tab) throw new Error('Tabs 内容必须是 Tab')})
     const titles = defaults.map((tag) => {return tag.props.title})
@@ -54,7 +52,7 @@ export default {
       titles,
       current,
       select,
-      navItems,
+      selectedItem,
       indicator,
       container
     }
